@@ -1,0 +1,21 @@
+name: Lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check syntax
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Recurse -Filter *.ps1
+          foreach ($f in $files) {
+            $errors = $null
+            $ast = [System.Management.Automation.Language.Parser]::ParseFile($f.FullName, [ref]$null, [ref]$errors)
+            if ($errors) { throw "Syntax errors in $($f.Name)" }
+          }
