@@ -1,3 +1,6 @@
+# windows-hardening-toolkit
+
+[![CI](https://img.shields.io/github/actions/workflow/status/vtino17/windows-hardening-toolkit/ci.yml?style=flat-square&label=CI)](https://github.com/vtino17/windows-hardening-toolkit/actions)
 # Windows Hardening Toolkit
 
 CIS-based Windows Server security automation with PowerShell scripts, Group Policy templates, and audit configurations.
@@ -202,3 +205,4 @@ windows-hardening-toolkit/
 ---
 
 **Author:** [vtino17](https://github.com/vtino17) — Network Engineer & System Administrator
+
