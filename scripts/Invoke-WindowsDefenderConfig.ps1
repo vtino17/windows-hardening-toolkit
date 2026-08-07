@@ -14,8 +14,11 @@ Set-MpPreference -DisableCatchupQuickScan $false
 Set-MpPreference -DisableCatchupSignatureUpdate $false
 Set-MpPreference -SignatureUpdateInterval 4
 Set-MpPreference -EnableControlledFolderAccess Enabled
-Set-MpPreference -ControlledFolderAccessProtectedFolders "$env:USERPROFILE\Documents"
-Set-MpPreference -ControlledFolderAccessProtectedFolders "$env:USERPROFILE\Pictures"
-Set-MpPreference -ControlledFolderAccessProtectedFolders "$env:USERPROFILE\Desktop"
-Set-MpPreference -ControlledFolderAccessProtectedFolders "$env:USERPROFILE\Downloads"
-Write-Host "Windows Defender hardened with cloud protection, ASR rules, and controlled folder access"
+$protectedFolders = @(
+    "$env:USERPROFILE\Documents"
+    "$env:USERPROFILE\Pictures"
+    "$env:USERPROFILE\Desktop"
+    "$env:USERPROFILE\Downloads"
+)
+Add-MpPreference -ControlledFolderAccessProtectedFolders $protectedFolders
+Write-Host "Windows Defender hardened with cloud protection and controlled folder access"
